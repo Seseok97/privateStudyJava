@@ -26,6 +26,7 @@ public class review_0222 {
 		dog.petInfo();
 		dog.play("달리기");
 		dog.feed("시저");
+		dog.movePointCheck();
 		dog.bark();
 	}//main() method end
 }//review_0222 class end
