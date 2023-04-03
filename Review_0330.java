@@ -89,6 +89,46 @@ public class Review_0330 {
 		
 		System.out.println("\n===NextJavaFile===\n");
 		
+		//0403
+		
+		Finals fi = new Finals();
+		System.out.println(fi.finalMember);
+		System.out.println(fi.normalMember);
+//		fi.finalMember = 30; // final, 변경 불가
+		fi.normalMember = 40; // 변경 가능
+		fi.finalMethod();
+		fi.normalMethod();
+		
+		System.out.println(Math.PI);
+		// final 상수의 대표적인 예시, PI값. (원주율)
+		
+		System.out.println("\n===NextJavaFile===\n");
+		
+		Parent rc_P = new Parent();
+		Child rc_C = new Child();
+		
+		rc_P.parentPrn();
+		rc_C.parentPrn();
+		rc_C.childPrn();
+		
+		Parent rc_P2 = new Child(); // 업캐스팅
+		rc_P2.parentPrn();
+//		rc_P2.chilcPrn(); // 업캐스팅으로 인한 참조영역 축소
+		// Child 생성자를 통하여 선언 되었으나, 데이터타입이 Parent이므로
+		// Child 클래스의 메서드를 참조하지 못한다.
+		
+		Child rc_C2 = (Child)rc_P2; // 다운캐스팅
+		// Parent 타입이 Child타입보다 상위 타입임 ! > 강제형변환 필요
+		rc_C2.parentPrn();
+		rc_C2.childPrn();
+		// Child 클래스의 메서드가 참조 불가능이던 rc_P2 를 대입한 Child타입 rc_C2
+		// > 타입이 Child 이므로 >> Child 클래스의 메서드가 다시 이용 가능해졌다 !
+			
+		System.out.println("\n===NextJavaFile===\n");
+		
+
+		
+		
 		
 
 	}// main() method end
@@ -98,7 +138,7 @@ public class Review_0330 {
 		StaticMember sm = new StaticMember();
 		System.out.println(sm.str2);
 		System.out.println("This is Static - Method.");
-	}
+	} //StaticMethod() method end
 
 }// public class end
 
@@ -298,6 +338,49 @@ class Student extends Person {
 }// Student class end
 
 // 0322_final
+
+
+//0403
+
+class Finals{
+	final int finalMember = 10;
+	int normalMember = 20;
+	public final int finalMethod() {
+//		finalMember = 30; // final값 변경 불가
+		System.out.println(finalMember);
+		return finalMember;
+	}// finalMethod() method end
+	public int normalMethod() {
+		System.out.println(normalMember);
+		return normalMember;
+	}//normalMethod() method end
+}// Finals class end
+
+class subFinals extends Finals{
+	
+	public void subFinalsMethod() {
+//		finalMember = 30; // final값 변경 불가
+		normalMember = 40;
+		finalMethod();
+		normalMethod();
+	}//subFinalsMethod() method end
+
+	@Override
+	public int normalMethod() {
+		// TODO Auto-generated method stub
+		finalMethod(); // 사용은 가능하다.
+		return super.normalMethod();
+	}
+//	@Override
+//	public int finalMethod() { // final 메서드 오버라이딩 불가
+//		// TODO Auto-generated method stub
+//		return super.finalMethod();
+//	}
+	
+
+	
+
+}//subFinals class end
 
 
 
